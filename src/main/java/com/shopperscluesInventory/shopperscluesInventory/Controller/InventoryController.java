@@ -23,10 +23,11 @@ public class InventoryController {
     }
 
     @PostMapping("/add")
-    public Inventory addInventory(@RequestParam String name,
+    public Inventory addInventory(@RequestParam String productId,
+                                  @RequestParam String name,
                                   @RequestParam Long quantity,
                                   @RequestParam Long vendorId) {
-        return inventoryService.addInventory(name, quantity, vendorId);
+        return inventoryService.addInventory(productId,name, quantity, vendorId);
     }
 
     @PutMapping("/update/{productId}")

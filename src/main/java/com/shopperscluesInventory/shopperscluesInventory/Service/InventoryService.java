@@ -19,10 +19,10 @@ public class InventoryService {
         return inventoryRepository.findAll();
     }
 
-    public Inventory addInventory(String name, Long quantity, Long vendorId) {
+    public Inventory addInventory(String pId,String name, Long quantity, Long vendorId) {
         Inventory inventory = Inventory.builder()
                 .id(UUID.randomUUID())            // Mongo _id
-                .productId(UUID.randomUUID().toString())     // separate productId
+                .productId(pId)     // separate productId
                 .name(name)
                 .quantity(quantity)
                 .vendorId(vendorId)
