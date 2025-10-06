@@ -31,7 +31,7 @@ public class InventoryController {
     }
 
     @PutMapping("/update/{productId}")
-    public Inventory updateQuantity(@PathVariable UUID productId,
+    public Inventory updateQuantity(@PathVariable String productId,
                                     @RequestParam Long quantity) {
         return inventoryService.updateQuantityByProductId(productId, quantity);
     }
@@ -42,13 +42,13 @@ public class InventoryController {
         return inventoryService.updateQuantityByVendorId(vendorId, quantity);
     }
     @GetMapping("/check")
-    public boolean checkAvailability(@RequestParam("productId") UUID productId,
+    public boolean checkAvailability(@RequestParam("productId") String productId,
                                      @RequestParam("qty") int qty) {
         return inventoryService.checkAvailability(productId, qty);
     }
 
     @GetMapping("/{productId}")
-    public Inventory getInventoryByProductId(@PathVariable UUID productId) {
+    public Inventory getInventoryByProductId(@PathVariable String productId) {
         return inventoryService.getInventoryByProductId(productId);
     }
 
@@ -56,14 +56,14 @@ public class InventoryController {
 
     // Update inventory quantity by productId
     @PutMapping("/updateInventory")
-    public Inventory updateInventory(@RequestParam UUID productId,
+    public Inventory updateInventory(@RequestParam String productId,
                                      @RequestParam Long quantity) {
         return inventoryService.updateQuantityByProductId(productId, quantity);
     }
 
     // Delete inventory by productId
     @DeleteMapping("/deleteInventory")
-    public void deleteInventory(@RequestParam UUID productId) {
+    public void deleteInventory(@RequestParam String productId) {
         inventoryService.deleteInventory(productId);
     }
 

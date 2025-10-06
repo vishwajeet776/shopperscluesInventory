@@ -12,6 +12,6 @@ import java.util.UUID;
 public interface InventoryRepository extends MongoRepository<Inventory, UUID> {
     List<Inventory> findByVendorId(Long vendorId);
 
-    Inventory findByProductId(UUID productId);
+    Inventory findByProductId(String productId);
 
 }

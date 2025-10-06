@@ -31,7 +31,7 @@ public class InventoryService {
         return inventoryRepository.save(inventory);
     }
 
-    public Inventory updateQuantityByProductId(UUID productId, Long quantity) {
+    public Inventory updateQuantityByProductId(String productId, Long quantity) {
         // use productId (not id)
         Inventory inventory = inventoryRepository.findByProductId(productId);
 //                .orElseThrow(() -> new RuntimeException("Product not found with productId: " + productId));
@@ -50,18 +50,18 @@ public class InventoryService {
     }
 
     // Check availability of a product
-    public boolean checkAvailability(UUID productId, int qty) {
+    public boolean checkAvailability(String productId, int qty) {
         Inventory inventory = inventoryRepository.findByProductId(productId);
 //                .orElseThrow(() -> new RuntimeException("Product not found in inventory"));
         return inventory.getQuantity() >= qty;
     }
 
-    public Inventory getInventoryByProductId(UUID productId) {
+    public Inventory getInventoryByProductId(String productId) {
         return inventoryRepository.findByProductId(productId);
 //                .orElseThrow(() -> new RuntimeException("Product not found in inventory"));
     }
 
-    public void deleteInventory(UUID productId) {
+    public void deleteInventory(String productId) {
         Inventory inventory = inventoryRepository.findByProductId(productId);
         inventoryRepository.delete(inventory);
     }
